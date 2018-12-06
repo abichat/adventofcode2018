@@ -13,9 +13,8 @@ words %>%
   unnest(df_count) %>% 
   filter(count %in% 2:3) %>% 
   distinct(word, count) %>% 
-  group_by(count) %>% 
-  summarise(N = n()) %>% 
-  pull(N) %>% 
+  count(count) %>% 
+  pull(n) %>% 
   prod()
 
 

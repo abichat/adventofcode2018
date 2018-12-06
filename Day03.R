@@ -3,7 +3,7 @@ library(tidyverse)
 #### Input ####
 
 df_square <-
-  read_table("input_03.txt", col_names = FALSE, col_types = cols(X1 = col_character())) %>% 
+  read_table("input_03.txt", col_names = FALSE, col_types = "c") %>% 
   separate(X1, into = c("ID", "Xinf", "Yinf", "Xlength", "Ylength"), sep = c(" @ |,|: |x")) %>% 
   mutate(ID = str_sub(ID, start = 2)) %>% 
   mutate_all(as.numeric) %>% 

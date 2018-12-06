@@ -4,7 +4,7 @@ library(lubridate)
 #### Input ####
 
 df_records <-
-  read_csv("input_04.txt", col_names = FALSE, col_types = cols(X1 = col_character())) %>% 
+  read_csv("input_04.txt", col_names = FALSE, col_types = "c") %>% 
   separate(X1, into = c("datetime", "action"), sep = c("\\] ")) %>% 
   mutate(datetime = str_sub(datetime, start = 2),
          datetime = ymd_hm(datetime)) %>% 

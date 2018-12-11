@@ -10,7 +10,7 @@ parameters <-
 
 n_elves <- parameters[1]
 n_marbles <- parameters[2]
-n_marbles <- 100 * n_marbles
+# n_marbles <- 10 * n_marbles
 
 
 #### Part One and Two ####

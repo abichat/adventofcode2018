@@ -29,7 +29,7 @@ time_script <- function(script) {
 df_time <-
   list.files() %>% 
   tibble(Script = .) %>% 
-  filter(str_detect(Script, "Day.*")) %>% 
+  filter(str_detect(Script, "Day.*"), !str_detect(Script, "11")) %>% 
   mutate(Day = as.numeric(str_extract(Script, "[0-9]+")),
          Time = map_dbl(Script, time_script))
 ```
@@ -42,6 +42,7 @@ df_time %>%
   geom_text(aes(label = Time), nudge_y = 2, size = 2) +
   scale_x_continuous(breaks = 1:25, limits = c(0.5, 25.5), minor_breaks = NULL) +
   scale_y_continuous(minor_breaks = NULL) +
-  labs(y = "Time (in seconds)", title = "Running time per puzzle") +
+  labs(y = "Time (in seconds)", title = "Running time per puzzle",
+       caption = "Day 11 running time is too long so it's not represented here.") +
   theme_minimal()
 ```
